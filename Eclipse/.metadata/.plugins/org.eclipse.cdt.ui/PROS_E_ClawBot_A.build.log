@@ -1,0 +1,6 @@
+15:24:30 **** Incremental Build of configuration Default for project PROS_E_ClawBot_A ****
+make all 
+make[1]: Nothing to be done for `all'.
+
+15:24:32 Build Finished (took 1s.406ms)
+

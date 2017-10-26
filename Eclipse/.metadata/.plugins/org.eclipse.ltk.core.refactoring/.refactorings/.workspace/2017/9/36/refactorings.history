@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;PROS_E_2017-2018_A&apos; to &apos;PROS_E_ITZ_A&apos;" description="Rename resource &apos;PROS_E_2017-2018_A&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/PROS_E_2017-2018_A" name="PROS_E_ITZ_A" stamp="1504908198600" updateReferences="true"/>
+</session>

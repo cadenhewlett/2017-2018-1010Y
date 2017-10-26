@@ -1,0 +1,11 @@
+09:05:29 **** Incremental Build of configuration Default for project Copy of PROS_E_Robot_of_Theseus_A(PEDRO) ****
+make all 
+CC -I../include -I../src opcontrol.c
+opcontrol.c: In function 'driveControl':
+opcontrol.c:4:2: error: implicit declaration of function 'motorset' [-Werror=implicit-function-declaration]
+cc1.exe: some warnings being treated as errors
+make[1]: *** [../bin/opcontrol.o] Error 1
+make: *** [src] Error 2
+
+09:05:29 Build Finished (took 521ms)
+

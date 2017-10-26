@@ -1,0 +1,6 @@
+15:42:15 **** Incremental Build of configuration Default for project PROS_MULE ****
+make all 
+make[1]: Nothing to be done for `all'.
+
+15:42:16 Build Finished (took 361ms)
+
