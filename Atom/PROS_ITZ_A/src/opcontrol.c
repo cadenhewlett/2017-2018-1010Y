@@ -80,4 +80,9 @@ void operatorControl() {  //operator control function that dictates which functi
 		lcdPrint(uart1, 1, "1010 Y");  //writes "1010Y" on the first lcd line
 		lcdPrint(uart1, 2, "Batt: %1.3f V", (double)powerLevelMain() / 1000);  //writes [battery power] on the second lcd line
 	}
+<<<<<<< HEAD:Atom/PROS_ITZ_A/src/opcontrol.c
 }
+=======
+} 
+
+>>>>>>> 7530e1da80a2fb2df5606168a7a8b7e5c6d48651:opcontrol.c
