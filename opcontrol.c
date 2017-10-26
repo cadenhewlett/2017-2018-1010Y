@@ -68,5 +68,5 @@ void operatorControl() {  //operator control function that dictates which functi
 		lcdPrint(uart1, 1, "1010 Y");  //writes "1010Y" on the first lcd line
 		lcdPrint(uart1, 2, "Batt: %1.3f V", (double)powerLevelMain() / 1000);  //writes [battery power] on the second lcd line
 	}
-}
+} 
 
