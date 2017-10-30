@@ -21,16 +21,13 @@ void clearDrive() {
 
 
 void clearArm() {
-	motorSet(ARM_RIGHT_OUT, 0);
-	motorSet(ARM_RIGHT_IN, 0);
-	motorSet(ARM_LEFT_OUT, 0);
-	motorSet(ARM_LEFT_IN, 0);
+	motorSet(ARM, 0);
+
 }
 
 
 void clearClaw() {
-	motorSet(CLAW_LEFT, 0);
-	motorSet(CLAW_RIGHT, 0);
+	motorSet(CLAW, 0);
 }
 
 
@@ -41,16 +38,12 @@ void motorsDrive(int power) {
 
 
 void motorsArm(int power) {
-	motorSet(ARM_RIGHT_OUT, -power);
-	motorSet(ARM_RIGHT_IN, -power);
-	motorSet(ARM_LEFT_OUT, power);
-	motorSet(ARM_LEFT_IN, power);
+	motorSet(ARM, -power);
 }
 
 
 void motorsClaw(int power) {
-	motorSet(CLAW_LEFT, -power);
-	motorSet(CLAW_RIGHT, power);
+	motorSet(CLAW, power);;
 }
 
 

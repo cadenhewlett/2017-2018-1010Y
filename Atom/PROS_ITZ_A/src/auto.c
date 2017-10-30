@@ -6,6 +6,20 @@
  */
 
 
+/*  comment dictionary:
+ *  1. before a comment have a double space
+ *  2. if something is unknown or needs to be expanded on put it in (BRACKETS) to be fixed later
+ *  3. to talk about something a function does in a small profile define it in [SQUARE BRACKETS]
+ *  4. if a comment ends with a "-" that means it very closely trails into the description of the next code or it simply means "(onwards)" for numbers  ...not always needed
+ *  5. notes in comments have a double space then "..." at the start
+ *  6. important information is like a note but uses "!!!" at the start and back
+ *
+ *  organization dictionary:
+ *  1. old comments have capital letters, new notes do not  ...fix old comments
+ *  2-. (WIP)
+ */
+
+
 /**
 * File for autonomous code.
 *
@@ -29,21 +43,39 @@
 
 
 #define POS 1 //positive
-#define NEG 2 //negative
+#define NEG 0 //negative
 
 
-void compAuto() {
-//autoFunctions
+void compAuto1() {  //auto code for the competition
+	/*autoFunctions
+	 * PATH:
+	 *
+	 */
+
 }
 
-void pgSkills() {
-	//autoFunctions
+void compAuto2() {  //auto code for the competition
+	/*autoFunctions
+	 * PATH:
+	 *
+	 */
+
 }
 
-void autonomous() {
+void pgSkills3() {  //auto code for the competition
+	/*autoFunctions
+	 * PATH:
+	 *
+	 */
+}
+
+void autonomous() {  //selects which auto to use
 	//if (program == 1){
 	//	compAuto();
-	//} else if (program == 2) {
+	//} else if (program == 2){
+	//	compAuto();
+	//} else if (program == 3) {
 	//	pgSkills();
 	//}
+	compAuto1();
 }

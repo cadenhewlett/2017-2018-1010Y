@@ -2,7 +2,7 @@
 
 /** @file main.h
  * @brief Header file for global functions
- * 
+ *
  * Any experienced C or C++ programmer knows the importance of header files. For those who
  * do not, a header file allows multiple files to reference functions in other files without
  * necessarily having to see the code (and therefore causing a multiple definition). To make
@@ -117,16 +117,12 @@ void initialize();
  */
 void operatorControl();
 
-#define DRIVE_LEFT 2
-#define DRIVE_RIGHT 3
+#define DRIVE_LEFT 1 //positive for forward
+#define DRIVE_RIGHT 10 // negative for forward
 
-#define ARM_RIGHT_OUT 4
-#define ARM_RIGHT_IN 6
-#define ARM_LEFT_OUT 5
-#define ARM_LEFT_IN 7
+#define ARM 7 //positive for up
 
-#define CLAW_LEFT 9
-#define CLAW_RIGHT 8
+#define CLAW 6 //negative for close
 
 Encoder encLeft;
 Encoder encRight;

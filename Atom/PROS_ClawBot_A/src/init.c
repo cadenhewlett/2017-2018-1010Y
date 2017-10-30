@@ -1,5 +1,5 @@
 /**
- * File for initialization code.*
+ * File for initialization code.
  *
  * This file should contain the user initialize() function and any functions related to it.
  *
@@ -37,50 +37,4 @@ void initializeIO() {
  * This function must exit relatively promptly, or the operatorControl() and autonomous() tasks will not start. An autonomous mode selection menu like the pre_auton() in other environments can be implemented in this task if desired.
  */
 void initialize() {
-
-	encLeft = encoderInit(1, 2, true);
-	encRight = encoderInit(5, 6, true);
-
-	lcdInit(uart1);
-	//lcdClear(uart1);
-	//lcdBackLight(1);
-
-	//int autoId[] = {1, 2, 3};
-	//int counter = 0;
-	//lcdSetText(uart1, 2, "<      OK      >");
-
-	//while(1){
-		//if (lcdReadButtons(uart1) == 4) {
-		//			counter++;
-		//} else if (lcdReadButtons(uart1) == 1) {
-				//	counter--;
-				//}
-		//if (autoId[counter] == 1) {
-		//	lcdPrint(uart1, 1, "LOAD: NORM AUTO");
-		//} else if (autoId[counter] == 2) {
-		//	lcdPrint(uart1, 1, "LOAD: EXTND AUTO");
-		//} else if (autoId[counter] == 3) {
-		//	lcdPrint(uart1, 1, "LOAD: SKILL AUTO");
-		//}
-
-		//if (lcdReadButtons(uart1) == 2) {
-		//	if (autoId[counter] == 1) {
-		//		program = 1;
-		//		break;
-		//	} else if (autoId[counter] == 2) {
-		//		program = 2;
-			//	break;
-		//	} else if (autoId[counter] == 3) {
-		//		program = 3;
-		//		break;
-		//	} else {
-		//		continue;
-		//	}
-
-
-		//}
-	//	delay(100);
-	//}
-
-
 }

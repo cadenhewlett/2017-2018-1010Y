@@ -35,6 +35,18 @@ void clawControl() {  //control function for claw  ...need to add encoder so it 
 	}
 }
 
+/* keep claw closed opControl
+ *
+	if (encoderGet(encClaw) == degree) {
+		motorsClaw(30);
+	} else if { (encoderGet(encClaw) < degree) {
+		motorsClaw(60);
+	} else if { (encoderGet(encClaw) > degree) {
+		motorsClaw(-60);
+	}
+ *
+ */
+
 void liftControl() {  //control function for lift
 	if (joystickGetDigital(1, 5, JOY_UP)){  //get an integer from the joy stick (left up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code, secondly the joy stick port, thirdly the specific placement of say a trigger
 		motorSet(ARM_RIGHT_OUT, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
@@ -68,5 +80,9 @@ void operatorControl() {  //operator control function that dictates which functi
 		lcdPrint(uart1, 1, "1010 Y");  //writes "1010Y" on the first lcd line
 		lcdPrint(uart1, 2, "Batt: %1.3f V", (double)powerLevelMain() / 1000);  //writes [battery power] on the second lcd line
 	}
+<<<<<<< HEAD:Atom/PROS_ITZ_A/src/opcontrol.c
 }
+=======
+} 
 
+>>>>>>> 7530e1da80a2fb2df5606168a7a8b7e5c6d48651:opcontrol.c
