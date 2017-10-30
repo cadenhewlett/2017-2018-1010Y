@@ -83,6 +83,6 @@ void operatorControl() {  //operator control function that dictates which functi
 <<<<<<< HEAD:Atom/PROS_ITZ_A/src/opcontrol.c
 }
 =======
-} 
+}
 
 >>>>>>> 7530e1da80a2fb2df5606168a7a8b7e5c6d48651:opcontrol.c
