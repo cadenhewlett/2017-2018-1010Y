@@ -33,11 +33,9 @@ void clearDrive() {  //function to be used to stop all driving motors
 	motorSet(DRIVE_RIGHT, 0);  //stops the right drive motors
 }
 
-void clearArm() {  //function to be used to stop all arm motors
-	motorSet(ARM_RIGHT_OUT, 0);  //stops the out most right arm motor
-	motorSet(ARM_RIGHT_IN, 0);  //stops the inner most right arm motor
-	motorSet(ARM_LEFT_OUT, 0);  //stops the out most left arm motor
-	motorSet(ARM_LEFT_IN, 0);  //stops the inner most left arm motor
+void clearIntake() {  //function to be used to stop all Intake motors
+	motorSet(INTAKE_LEFT, 0);  //stops the left intake motor
+	motorSet(INTAKE_RIGHT, 0);  //stops the right intake motor
 }
 
 void clearClaw() {  //function to be used to stop all claw motors
@@ -45,13 +43,20 @@ void clearClaw() {  //function to be used to stop all claw motors
 	motorSet(CLAW_RIGHT, 0);  //stops the right claw motor
 }
 
+void clearArm() {  //function to be used to stop all arm motors
+	motorSet(ARM_RIGHT_TOP, 0);  //stops the out most right arm motor
+	motorSet(ARM_RIGHT_BOT, 0);  //stops the inner most right arm motor
+	motorSet(ARM_LEFT_TOP, 0);  //stops the out most left arm motor
+	motorSet(ARM_LEFT_BOT, 0);  //stops the inner most left arm motor
+}
+
 void clearAll() {  //function to stop all motors
 	motorSet(DRIVE_LEFT, 0);  //stops the left drive motors
 	motorSet(DRIVE_RIGHT, 0);  //stops the right drive motors
-	motorSet(ARM_RIGHT_OUT, 0);  //stops the out most right arm motor
-	motorSet(ARM_RIGHT_IN, 0);  //stops the inner most right arm motor
-	motorSet(ARM_LEFT_OUT, 0);  //stops the out most left arm motor
-	motorSet(ARM_LEFT_IN, 0);  //stops the inner most left arm motor
+	motorSet(ARM_RIGHT_TOP, 0);  //stops the out most right arm motor
+	motorSet(ARM_RIGHT_BOT, 0);  //stops the inner most right arm motor
+	motorSet(ARM_LEFT_TOP, 0);  //stops the out most left arm motor
+	motorSet(ARM_LEFT_BOT, 0);  //stops the inner most left arm motor
 	motorSet(CLAW_LEFT, 0);  //stops the left claw motor
 	motorSet(CLAW_RIGHT, 0);  //stops the right claw motor
 }
@@ -62,16 +67,21 @@ void motorsDrive(int power) {  //a function  that takes a variable as an input t
 	motorSet(DRIVE_RIGHT, -power);  //takes the previous variable to run the motor at the specified speed
 }
 
-void motorsArm(int power) {  //a function  that takes a variable as an input to drive the arm
-	motorSet(ARM_RIGHT_OUT, -power);  //takes the previous variable to run the motor at the specified speed
-	motorSet(ARM_RIGHT_IN, -power);  //takes the previous variable to run the motor at the specified speed
-	motorSet(ARM_LEFT_OUT, power);  //takes the previous variable to run the motor at the specified speed
-	motorSet(ARM_LEFT_IN, power);  //takes the previous variable to run the motor at the specified speed
+void motorsIntake(int power) {  //a function  that takes a variable as an input to drive the intake
+	motorSet(INTAKE_LEFT, -power);  //takes the previous variable to run the motor at the specified speed
+	motorSet(INTAKE_RIGHT, power);  //takes the previous variable to run the motor at the specified speed
 }
 
 void motorsClaw(int power) {  //a function  that takes a variable as an input to drive the claw
 	motorSet(CLAW_LEFT, -power);  //takes the previous variable to run the motor at the specified speed
 	motorSet(CLAW_RIGHT, power);  //takes the previous variable to run the motor at the specified speed
+}
+
+void motorsArm(int power) {  //a function  that takes a variable as an input to drive the arm
+	motorSet(ARM_RIGHT_TOP, -power);  //takes the previous variable to run the motor at the specified speed
+	motorSet(ARM_RIGHT_BOT, -power);  //takes the previous variable to run the motor at the specified speed
+	motorSet(ARM_LEFT_TOP, power);  //takes the previous variable to run the motor at the specified speed
+	motorSet(ARM_LEFT_BOT, power);  //takes the previous variable to run the motor at the specified speed
 }
 
 
@@ -125,6 +135,34 @@ void driveClosedClaw(int distance, int way) {  //Incorporate drive function inst
 	clearDrive();  //clears all movement from the motors
 }
 
+//Main function for intake movement
+void intake(int time, int way) {  //Binary closing continued action degree to stay at instead of time
+	if(way == 1) {  //drive the motors
+		motorsIntake(127);  //drives intake  motors at a certain speed
+		delay(time);  //has a specifically chosen delay speed
+	}
+	if (way == 0) {  //drive the motors
+		motorsIntake(-127);  //drives intake  motors at a certain speed
+		delay(time);  //has a specifically chosen delay speed
+	}
+	clearIntake();  //clears all movement from the motors
+}
+
+ //Main function for claw movement
+ void claw(int time, int way) {  //Binary closing continued action degree to stay at instead of time
+ 	if(way == 1) {  //drive the motors (in)
+ 		motorsClaw(127);  //drives claw  motors at a certain speed
+ 		delay(time);  //has a specifically chosen delay speed
+ 	}
+ 	if (way == 0) {  //drive the motors (out)
+ 		motorsClaw(-127);  //drives claw  motors at a certain speed
+ 		delay(time);  //has a specifically chosen delay speed
+ 	}
+ 	clearClaw();  //clears all movement from the motors
+ }
+
+ // keep claw closed autoFunctions
+
 
 //Main function for arm movement
 void arm(int time, int way) {  //Replace time with distance / degrees (precise degree to stay at) (add encoders)
@@ -142,41 +180,5 @@ void arm(int time, int way) {  //Replace time with distance / degrees (precise d
 	clearArm();  //clears all movement from the motors
 }
 
-
-//function to hold claw in place while moving arm
-//void armClosedClaw(int dist, int way) {  //just like "driveClosedClaw"
-//}
-
-
-
-//Main function for claw movement
-void claw(int time, int way) {  //Binary closing continued action degree to stay at instead of time
-	if(way == 1) {  //drive the motors (in)
-		motorsClaw(127);  //drives claw  motors at a certain speed
-		delay(time);  //has a specifically chosen delay speed
-	}
-	if (way == 0) {  //drive the motors (out)
-		motorsClaw(-127);  //drives claw  motors at a certain speed
-		delay(time);  //has a specifically chosen delay speed
-	}
-	clearClaw();  //clears all movement from the motors
-}
-
-/* keep claw closed autoFunctions
- *
-void claw(int time, int degree, int way) {
-	if (encoderGet(encClaw) < degree) {
-		if(way == 1) {
-			motorsClaw(127);
-				if (encoderGet(encClaw) == degree) {
-					motorsClaw(30);
-					delay(time);
-			}
-		}
-	}
-clearClaw();
-}
- *
- */
 
 #endif /* INCLUDE_AUTOFUNCTIONS_H_ */

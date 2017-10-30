@@ -25,14 +25,14 @@ void driveControl() {  //control function for driving  ...tank control
 
 void intakeControl() {  //control function for intake
 	if (joystickGetDigital(1, 6, JOY_UP)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
-		motorSet(INTAKE_LEFT, -127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
-		motorSet(INTAKE_RIGHT, 127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(INTAKE_LEFT, -127);  //intake control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(INTAKE_RIGHT, 127);  //intake control movement based on true/false command above this line (whether or not the trigger is pushed)
 	} else if (joystickGetDigital(1, 6, JOY_DOWN)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
-		motorSet(INTAKE_LEFT, 127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
-		motorSet(INTAKE_RIGHT, -127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(INTAKE_LEFT, 127);  //intake control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(INTAKE_RIGHT, -127);  //intake control movement based on true/false command above this line (whether or not the trigger is pushed)
 	} else { //if nothing else is happening then...
-		motorSet(INTAKE_LEFT, 0);  //if the trigger is not pushed the claw does not move
-		motorSet(INTAKE_RIGHT, 0);  //if the trigger is not pushed the claw does not move
+		motorSet(INTAKE_LEFT, 0);  //if the trigger is not pushed the intake does not move
+		motorSet(INTAKE_RIGHT, 0);  //if the trigger is not pushed the intake does not move
 	}
 }
 

@@ -142,18 +142,18 @@ void initialize();
 
 void operatorControl();
 
-#define DRIVE_LEFT 9  //whenever the code sees DRIVE_LEFT it replaces it with the proper port (1)
+#define DRIVE_LEFT 9  //whenever the code sees DRIVE_LEFT it replaces it with the proper port (9)
 #define DRIVE_RIGHT 2  //whenever the code sees DRIVE_RIGHT it replaces it with the proper port (2)
 
-#define ARM_RIGHT_TOP 8  //whenever the code sees ARM_RIGHT_OUT it replaces it with the proper port (3)
-#define ARM_RIGHT_BOT 7  //whenever the code sees ARM_RIGHT_IN it replaces it with the proper port (4)
-#define ARM_LEFT_TOP 4  //whenever the code sees ARM_LEFT_OUT it replaces it with the proper port (5)
-#define ARM_LEFT_BOT 3  //whenever the code sees ARM_LEFT_OUT it replaces it with the proper port (6)
+#define ARM_RIGHT_TOP 8  //whenever the code sees ARM_RIGHT_TOP it replaces it with the proper port (8)
+#define ARM_RIGHT_BOT 7  //whenever the code sees ARM_RIGHT_BOT it replaces it with the proper port (7)
+#define ARM_LEFT_TOP 4  //whenever the code sees ARM_LEFT_TOP it replaces it with the proper port (4)
+#define ARM_LEFT_BOT 3  //whenever the code sees ARM_LEFT_BOT it replaces it with the proper port (3)
 
-#define CLAW_RIGHT 6  //whenever the code sees CLAW_RIGHT it replaces it with the proper port (7)
-#define CLAW_LEFT 5  //whenever the code sees CLAW_LEFT it replaces it with the proper port (8)
+#define CLAW_RIGHT 6  //whenever the code sees CLAW_RIGHT it replaces it with the proper port (6)
+#define CLAW_LEFT 5  //whenever the code sees CLAW_LEFT it replaces it with the proper port (5)
 
-#define INTAKE_RIGHT 1  //whenever the code sees INTAKE_RIGHT it replaces it with the proper port (9)
+#define INTAKE_RIGHT 1  //whenever the code sees INTAKE_RIGHT it replaces it with the proper port (1)
 #define INTAKE_LEFT 10  //whenever the code sees INTAKE_LEFT it replaces it with the proper port (10)
 
 
