@@ -22,11 +22,26 @@ void driveControl() {  //control function for driving  ...tank control
 	motorSet(DRIVE_RIGHT, -rJoy);  //right tank control of wheels moving based on integers above this line
 }
 
-void clawControl() {  //control function for claw  ...need to add encoder so it stays in one position
+
+void intakeControl() {  //control function for intake
 	if (joystickGetDigital(1, 6, JOY_UP)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
+		motorSet(INTAKE_LEFT, -127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(INTAKE_RIGHT, 127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
+	} else if (joystickGetDigital(1, 6, JOY_DOWN)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
+		motorSet(INTAKE_LEFT, 127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(INTAKE_RIGHT, -127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
+	} else { //if nothing else is happening then...
+		motorSet(INTAKE_LEFT, 0);  //if the trigger is not pushed the claw does not move
+		motorSet(INTAKE_RIGHT, 0);  //if the trigger is not pushed the claw does not move
+	}
+}
+
+
+void clawControl() {  //control function for claw  ...need to add encoder so it stays in one position
+	if (joystickGetDigital(2, 6, JOY_UP)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
 		motorSet(CLAW_LEFT, -127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
 		motorSet(CLAW_RIGHT, 127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
-	} else if (joystickGetDigital(1, 6, JOY_DOWN)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
+	} else if (joystickGetDigital(2, 6, JOY_DOWN)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
 		motorSet(CLAW_LEFT, 127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
 		motorSet(CLAW_RIGHT, -127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
 	} else { //if nothing else is happening then...
@@ -35,36 +50,25 @@ void clawControl() {  //control function for claw  ...need to add encoder so it 
 	}
 }
 
-/* keep claw closed opControl
- *
-	if (encoderGet(encClaw) == degree) {
-		motorsClaw(30);
-	} else if { (encoderGet(encClaw) < degree) {
-		motorsClaw(60);
-	} else if { (encoderGet(encClaw) > degree) {
-		motorsClaw(-60);
-	}
- *
- */
 
 void liftControl() {  //control function for lift
-	if (joystickGetDigital(1, 5, JOY_UP)){  //get an integer from the joy stick (left up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code, secondly the joy stick port, thirdly the specific placement of say a trigger
-		motorSet(ARM_RIGHT_OUT, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
-		motorSet(ARM_RIGHT_IN, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
-		motorSet(ARM_LEFT_OUT, 127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
-		motorSet(ARM_LEFT_IN, 127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+	if (joystickGetDigital(2, 5, JOY_UP)){  //get an integer from the joy stick (left up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code, secondly the joy stick port, thirdly the specific placement of say a trigger
+		motorSet(ARM_RIGHT_TOP, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(ARM_RIGHT_BOT, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(ARM_LEFT_TOP, 127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(ARM_LEFT_BOT, 127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
 
-	} else if (joystickGetDigital (1, 5, JOY_DOWN)) {  //get an integer from the joy stick (left up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code, secondly the joy stick port, thirdly the specific placement of say a trigger
-		motorSet(ARM_RIGHT_OUT, 127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
-		motorSet(ARM_RIGHT_IN, 127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
-		motorSet(ARM_LEFT_OUT, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
-		motorSet(ARM_LEFT_IN, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+	} else if (joystickGetDigital (2, 5, JOY_DOWN)) {  //get an integer from the joy stick (left up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code, secondly the joy stick port, thirdly the specific placement of say a trigger
+		motorSet(ARM_RIGHT_TOP, 127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(ARM_RIGHT_BOT, 127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(ARM_LEFT_TOP, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+		motorSet(ARM_LEFT_BOT, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
 
 	} else {  //if nothing else is happening then-  ...Change to a constant power based on location to stay still where the claw is left
-		motorSet(ARM_RIGHT_OUT, 0);  //if the trigger is not pushed the claw does not move
-		motorSet(ARM_RIGHT_IN, 0);  //if the trigger is not pushed the claw does not move
-		motorSet(ARM_LEFT_OUT, 0);  //if the trigger is not pushed the claw does not move
-		motorSet(ARM_LEFT_IN, 0);  //if the trigger is not pushed the claw does not move
+		motorSet(ARM_RIGHT_TOP, 0);  //if the trigger is not pushed the claw does not move
+		motorSet(ARM_RIGHT_BOT, 0);  //if the trigger is not pushed the claw does not move
+		motorSet(ARM_LEFT_TOP, 0);  //if the trigger is not pushed the claw does not move
+		motorSet(ARM_LEFT_BOT, 0);  //if the trigger is not pushed the claw does not move
 	}
 }
 
