@@ -76,6 +76,7 @@ void liftControl() {  //control function for lift
 void operatorControl() {  //operator control function that dictates which function run  !!!DO NOT DELETE!!!
 	while (true) {  //while the operator has control-
 		driveControl();  //driving function plays
+		intakeControl();  //intake function plays
 		liftControl();  //lift function plays
 		clawControl();  //claw function plays
 		delay(25);  //delay timer to not spam the cortex with commands  ...does not interfere with control  ...based on milliseconds
