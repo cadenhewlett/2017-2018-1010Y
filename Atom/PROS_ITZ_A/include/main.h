@@ -150,8 +150,7 @@ void operatorControl();
 #define ARM_LEFT_TOP 4  //whenever the code sees ARM_LEFT_TOP it replaces it with the proper port (4)
 #define ARM_LEFT_BOT 3  //whenever the code sees ARM_LEFT_BOT it replaces it with the proper port (3)
 
-#define CLAW_RIGHT 6  //whenever the code sees CLAW_RIGHT it replaces it with the proper port (6)
-#define CLAW_LEFT 5  //whenever the code sees CLAW_LEFT it replaces it with the proper port (5)
+#define CLAW 6  //whenever the code sees CLAW it replaces it with the proper port (6)
 
 #define INTAKE_RIGHT 1  //whenever the code sees INTAKE_RIGHT it replaces it with the proper port (1)
 #define INTAKE_LEFT 10  //whenever the code sees INTAKE_LEFT it replaces it with the proper port (10)

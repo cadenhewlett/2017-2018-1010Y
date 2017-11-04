@@ -39,8 +39,7 @@ void clearIntake() {  //function to be used to stop all Intake motors
 }
 
 void clearClaw() {  //function to be used to stop all claw motors
-	motorSet(CLAW_LEFT, 0);  //stops the left claw motor
-	motorSet(CLAW_RIGHT, 0);  //stops the right claw motor
+	motorSet(CLAW, 0);  //stops the left claw motor
 }
 
 void clearArm() {  //function to be used to stop all arm motors
@@ -57,8 +56,7 @@ void clearAll() {  //function to stop all motors
 	motorSet(ARM_RIGHT_BOT, 0);  //stops the inner most right arm motor
 	motorSet(ARM_LEFT_TOP, 0);  //stops the out most left arm motor
 	motorSet(ARM_LEFT_BOT, 0);  //stops the inner most left arm motor
-	motorSet(CLAW_LEFT, 0);  //stops the left claw motor
-	motorSet(CLAW_RIGHT, 0);  //stops the right claw motor
+	motorSet(CLAW, 0);  //stops the left claw motor
 }
 
 
@@ -73,8 +71,7 @@ void motorsIntake(int power) {  //a function  that takes a variable as an input 
 }
 
 void motorsClaw(int power) {  //a function  that takes a variable as an input to drive the claw
-	motorSet(CLAW_LEFT, -power);  //takes the previous variable to run the motor at the specified speed
-	motorSet(CLAW_RIGHT, power);  //takes the previous variable to run the motor at the specified speed
+	motorSet(CLAW, -power);  //takes the previous variable to run the motor at the specified speed
 }
 
 void motorsArm(int power) {  //a function  that takes a variable as an input to drive the arm
@@ -135,6 +132,7 @@ void driveClosedClaw(int distance, int way) {  //Incorporate drive function inst
 	clearDrive();  //clears all movement from the motors
 }
 
+
 //Main function for intake movement
 void intake(int time, int way) {  //Binary closing continued action degree to stay at instead of time
 	if(way == 1) {  //drive the motors
@@ -148,6 +146,7 @@ void intake(int time, int way) {  //Binary closing continued action degree to st
 	clearIntake();  //clears all movement from the motors
 }
 
+
  //Main function for claw movement
  void claw(int time, int way) {  //Binary closing continued action degree to stay at instead of time
  	if(way == 1) {  //drive the motors (in)
@@ -160,8 +159,6 @@ void intake(int time, int way) {  //Binary closing continued action degree to st
  	}
  	clearClaw();  //clears all movement from the motors
  }
-
- // keep claw closed autoFunctions
 
 
 //Main function for arm movement
