@@ -47,13 +47,6 @@
 
 
 void compAuto1() {  //auto code for the competition
-intake(500, 1);
-drive(1000, 1);
-drive(750, 0);
-rotate(300, 1);
-drive (300, 1);
-intake(500, 0);
-drive(500, 0);
 
 }
 

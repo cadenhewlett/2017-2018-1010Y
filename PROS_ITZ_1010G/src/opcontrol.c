@@ -18,16 +18,16 @@
 void driveControl() {  //control function for driving  ...tank control
 	int rJoy = joystickGetAnalog(1, 2);  //get an integer from the right joy stick  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
 	int lJoy = joystickGetAnalog(1, 3);  //get an integer from the left joy stick  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
-	motorSet(DRIVE_LEFT, -lJoy);  //right tank control of wheels moving based on integers above this line
+	motorSet(DRIVE_LEFT, lJoy);  //right tank control of wheels moving based on integers above this line
 	motorSet(DRIVE_RIGHT, -rJoy);  //right tank control of wheels moving based on integers above this line
 }
 
 
 void intakeControl() {  //control function for intake
-	if (joystickGetDigital(1, 8, JOY_RIGHT)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
+	if (joystickGetDigital(1, 6, JOY_UP)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
 		motorSet(INTAKE_LEFT, -127);  //intake control movement based on true/false command above this line (whether or not the trigger is pushed)
 		motorSet(INTAKE_RIGHT, 127);  //intake control movement based on true/false command above this line (whether or not the trigger is pushed)
-	} else if (joystickGetDigital(1, 8, JOY_LEFT)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
+	} else if (joystickGetDigital(1, 6, JOY_DOWN)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
 		motorSet(INTAKE_LEFT, 127);  //intake control movement based on true/false command above this line (whether or not the trigger is pushed)
 		motorSet(INTAKE_RIGHT, -127);  //intake control movement based on true/false command above this line (whether or not the trigger is pushed)
 	} else { //if nothing else is happening then...
@@ -38,9 +38,9 @@ void intakeControl() {  //control function for intake
 
 
 void clawControl() {  //control function for claw  ...need to add encoder so it stays in one position
-	if (joystickGetDigital(1, 6, JOY_UP)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
+	if (joystickGetDigital(2, 6, JOY_UP)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
 		motorSet(CLAW, -127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
-	} else if (joystickGetDigital(1, 6, JOY_DOWN)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
+	} else if (joystickGetDigital(2, 6, JOY_DOWN)) {  //get an integer from the joy stick (right up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code and secondly the joy stick port
 		motorSet(CLAW, 127);  //claw control movement based on true/false command above this line (whether or not the trigger is pushed)
 	} else { //if nothing else is happening then...
 		motorSet(CLAW, 0);  //if the trigger is not pushed the claw does not move
@@ -69,6 +69,17 @@ void liftControl() {  //control function for lift
 	}
 }
 
+void barControl() {  //control function for lift
+	if (joystickGetDigital(2, 8, JOY_UP)){  //get an integer from the joy stick (left up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code, secondly the joy stick port, thirdly the specific placement of say a trigger
+		motorSet(FOUR_BAR, 127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+
+	} else if (joystickGetDigital (2, 8, JOY_DOWN)) {  //get an integer from the joy stick (left up) trigger  !!!CHANGE 1 TO 2 TO CHANGE TO PARTNER CONTROL!!!  ...after joystickGetAnalog there are brackets with numbers, these number correspond firstly which controller uses this code, secondly the joy stick port, thirdly the specific placement of say a trigger
+		motorSet(FOUR_BAR, -127);  //lift control movement based on true/false command above this line (whether or not the trigger is pushed)
+
+	} else {  //if nothing else is happening then-  ...Change to a constant power based on location to stay still where the claw is left
+		motorSet(FOUR_BAR, 0);  //if the trigger is not pushed the claw does not move
+	}
+}
 
 void operatorControl() {  //operator control function that dictates which function run  !!!DO NOT DELETE!!!
 	while (true) {  //while the operator has control-
@@ -79,7 +90,7 @@ void operatorControl() {  //operator control function that dictates which functi
 		delay(25);  //delay timer to not spam the cortex with commands  ...does not interfere with control  ...based on milliseconds
 
 		lcdClear(uart1);  //clears the lcd screen fully
-		lcdPrint(uart1, 1, "1010 A");  //writes "1010Y" on the first lcd line
+		lcdPrint(uart1, 1, "1010 Y");  //writes "1010Y" on the first lcd line
 		lcdPrint(uart1, 2, "Batt: %1.3f V", (double)powerLevelMain() / 1000);  //writes [battery power] on the second lcd line
 	}
 }

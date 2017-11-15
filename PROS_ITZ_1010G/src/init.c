@@ -54,8 +54,8 @@ void initializeIO() {
  */
 void initialize() {
 
-	encRight = encoderInit(1, 2, true);  //names the encoder in ports 1 and 2 encLeft  ...encoder currently not working
-	encLeft = encoderInit(5, 6, true);  //names the encoder in ports 5 and 6 encRight  ...encoder currently not working
+	encLeft = encoderInit(1, 2, false);  //names the encoder in ports 1 and 2 encLeft  ...encoder currently not working
+	encRight = encoderInit(5, 6, false);  //names the encoder in ports 5 and 6 encRight  ...encoder currently not working
 
 	lcdInit(uart1);  //Improve this code   |
 	lcdClear(uart1);  //                   V
