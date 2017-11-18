@@ -57,8 +57,8 @@ void initialize() {
 	encLeft = encoderInit(1, 2, false);  //names the encoder in ports 1 and 2 encLeft  ...encoder currently not working
 	encRight = encoderInit(5, 6, false);  //names the encoder in ports 5 and 6 encRight  ...encoder currently not working
 
-	lcdInit(uart1);  //Improve this code   |
-	lcdClear(uart1);  //                   V
+	//lcdInit(uart1);  //Improve this code   |
+	//lcdClear(uart1);  //                   V
 	//lcdBackLight(1);
 
 	//int autoId[] = {1, 2, 3};

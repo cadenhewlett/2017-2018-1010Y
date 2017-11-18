@@ -49,6 +49,10 @@ void clearArm() {  //function to be used to stop all arm motors
 	motorSet(ARM_LEFT_BOT, 0);  //stops the inner most left arm motor
 }
 
+void clearBar() {  //function to be used to stop four bar motor
+	motorSet(FOUR_BAR, 0);  //stops the four bar motor
+}
+
 void clearAll() {  //function to stop all motors
 	motorSet(DRIVE_LEFT, 0);  //stops the left drive motors
 	motorSet(DRIVE_RIGHT, 0);  //stops the right drive motors
@@ -57,6 +61,7 @@ void clearAll() {  //function to stop all motors
 	motorSet(ARM_LEFT_TOP, 0);  //stops the out most left arm motor
 	motorSet(ARM_LEFT_BOT, 0);  //stops the inner most left arm motor
 	motorSet(CLAW, 0);  //stops the left claw motor
+	motorSet(FOUR_BAR, 0);  //stops the left claw motor
 }
 
 
@@ -79,6 +84,10 @@ void motorsArm(int power) {  //a function  that takes a variable as an input to 
 	motorSet(ARM_RIGHT_BOT, -power);  //takes the previous variable to run the motor at the specified speed
 	motorSet(ARM_LEFT_TOP, power);  //takes the previous variable to run the motor at the specified speed
 	motorSet(ARM_LEFT_BOT, power);  //takes the previous variable to run the motor at the specified speed
+}
+
+void motorsBar(int power) {  //a function  that takes a variable as an input to drive the claw
+	motorSet(FOUR_BAR, power);  //takes the previous variable to run the motor at the specified speed
 }
 
 
@@ -104,39 +113,43 @@ void driveTime(int time, int way) {  //drive function to go forward/backward  ..
 }
 
 void rotate(int distance, int way){  //drive function to turn the robot  ...make distance degrees?
-	encoderReset(encLeft);  //resets encoder to 0
-	encoderReset(encRight);  //resets encoder to 0
+	//encoderReset(encLeft);  //resets encoder to 0
+	//encoderReset(encRight);  //resets encoder to 0
 		if (way == 1) {  //drives the motors depending on way- !!!left!!!
-			while (abs(encoderGet(encLeft)) < distance){  //as long as the encoders have read less than the given distance
+			//while (abs(encoderGet(encLeft)) < distance){  //as long as the encoders have read less than the given distance
 				motorSet(DRIVE_LEFT, 127);  //drives the motors according to the directions
 				motorSet(DRIVE_RIGHT, -127);  //drives the motors according to the directions
+				delay(distance);
 			}
-		}
+	//	}
 		if (way == 0) {  //drives the motors depending on way- !!!right!!!
-			while (abs(encoderGet(encRight)) < distance){  //as long as the encoders have read less than the given distance
+			//while (abs(encoderGet(encRight)) < distance){  //as long as the encoders have read less than the given distance
 				motorSet(DRIVE_LEFT, -127);  //drives the motors according to the directions
 				motorSet(DRIVE_RIGHT, 127);  //drives the motors according to the directions
+				delay(distance);
 		}
 		delay(25);  //a delay for 25 milliseconds
-	}
+	//}
 	clearDrive();  //clears all movement from the motors
 }
 
 void driveClosedClaw(int distance, int way) {  //Incorporate drive function instead of re-written
-	encoderReset(encLeft);  //resets encoder to 0
-	encoderReset(encRight);  //resets encoder to 0
-	while ( (abs(encoderGet(encLeft) < distance)  //while the encoder is below the distance integer-
-		  && (abs(encoderGet(encRight))) < distance)) {  //and while the other encoder is below the distance integer-
+	//encoderReset(encLeft);  //resets encoder to 0
+	//encoderReset(encRight);  //resets encoder to 0
+	//while ( (abs(encoderGet(encLeft) < distance)  //while the encoder is below the distance integer-
+	//	  && (abs(encoderGet(encRight))) < distance)) {  //and while the other encoder is below the distance integer-
 		if (way == 1) {  //drive the motors (__) as far as the previous code allows
 			motorsClaw(100);  //drives claw motors at a certain speed
 			motorsDrive(127);  //drives drive  motors at a certain speed
+			delay(distance);
 		}
 		if (way == 0) {  //drive the motors (__) as far as the previous code allows
 			motorsClaw(100);  //drives claw motors at a certain speed
 			motorsDrive(-127);  //drives drive motors at a certain speed
+			delay(distance);
 		}
 		delay(25);  //a delay for 25 milliseconds
-	}
+	//}
 	clearClaw();  //clears all movement from the motors
 	clearDrive();  //clears all movement from the motors
 }
@@ -184,6 +197,22 @@ void arm(int time, int way) {  //Replace time with distance / degrees (precise d
 	}
 	delay(25);  //a delay for 25 milliseconds  ...is this needed
 	clearArm();  //clears all movement from the motors
+}
+
+//Main function for arm movement
+void bar(int time, int way) {  //Replace time with distance / degrees (precise degree to stay at) (add encoders)
+	//encoderReset(encArm);
+	//while ( (abs(encoderGet(encArm))) < distance ) {
+	if(way == 1) {  //drive the motors (up)
+		motorsBar(127);  //drives arm  motors at a certain speed
+		delay(time);   //a delay for 25 milliseconds
+	}
+	if (way == 0) {  //drive the motors (down)
+		motorsBar(-127);  //drives arm  motors at a certain speed
+		delay(time);  //a delay for 25 milliseconds
+	}
+	delay(25);  //a delay for 25 milliseconds  ...is this needed
+	clearBar();  //clears all movement from the motors
 }
 
 

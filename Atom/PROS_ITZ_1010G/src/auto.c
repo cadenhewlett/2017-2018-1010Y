@@ -47,9 +47,17 @@
 
 
 void compAuto1() {  //auto code for the competition
+bar(500, 1);
+bar(500, 0);
 arm(1000, 1);
-intake(500, 1);
-driveTime(2000, 1);
+bar(500, 1);
+driveTime(1000, 1);
+arm(400, 0);
+claw(400, 0);
+driveTime(1000, 0);
+rotate(200, 1);
+driveTime(1000, 1);
+clearAll();
 }
 
 void compAuto2() {  //auto code for the competition
